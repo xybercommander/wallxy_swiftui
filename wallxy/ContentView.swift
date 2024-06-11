@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAppCheck
 
 struct ContentView: View {
+    
+    init() {
+        let providerFactory = AppCheckDebugProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+        
+        FirebaseApp.configure()
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        MainView()
+            .preferredColorScheme(.light)
     }
 }
 
